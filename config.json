@@ -1,0 +1,16 @@
+{
+	"database": {
+		"address": "192.168.199.133",
+		"port": 27017,
+		"name": "kyoume"
+	},
+	"picture":{
+		"album":"./picture/album/",
+		"notice":"./picture/notice/",
+		"theme":"./picture/theme/"
+	},
+	"logger":{
+		"social":"./log/social/",
+		"lib":"./log/lib/"
+	}
+}
