@@ -22,10 +22,10 @@ class Application(tornado.web.Application):
 			'template_path': 'templates',
 			'static_path': 'static'
 		}
-		tornado.web.Application.__init__(self, handlers, **settings)
+		tornado.web.Application.__init__(self, handlers, debug = True, **settings)
 
 if __name__ == '__main__':
-#tornado.options.parse_command_line()
+	tornado.options.parse_command_line()
 	app = Application()
 	server = tornado.httpserver.HTTPServer(app)
 	server.listen(8000)
