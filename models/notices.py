@@ -8,8 +8,8 @@ class NoticeModel(ModelBase):
 
 	def add_notice(self, data):
 		notice = {
-					"contents": data["contents"],
-					"publisher": ModelBase.get_oid(data["user_id"]),
+					"content": data["content"],
+					"publisher": ModelBase.get_oid(data["publisher"]),
 					"create_date": datetime.utcnow(),
 					"invalid_date": datetime.utcnow() + timedelta(days = int(data["life"]))
 				}	
