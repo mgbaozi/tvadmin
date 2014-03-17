@@ -6,6 +6,8 @@ class UserModel(ModelBase):
 		super(UserModel, self).__init__()
 	
 	def add_user(self, user):
+		if self.collection.find({"account":user["account"]}):
+				return None
 		return str(self.collection.insert(user))
 
 	def get_all(self):

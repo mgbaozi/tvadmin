@@ -5,6 +5,7 @@ from pymongo import MongoClient
 from base.singleton import Singleton
 
 import logging
+log = logging.getLogger("database")
 
 class Database(object):
 	__metaclass__ = Singleton
@@ -15,7 +16,7 @@ class Database(object):
 	def _connect_db(self):
 		connection = MongoClient(self.db_config["address"], self.db_config["port"])
 		if connection:
-			logging.info("Connected Database on " + self.db_config["address"] + ":" + str(self.db_config["port"]))
+			log.info("Connected Database on " + self.db_config["address"] + ":" + str(self.db_config["port"]))
 		self._database = connection.__getattr__(self.db_config["name"])
 	
 	def __getattr__(self, name):

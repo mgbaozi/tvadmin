@@ -12,7 +12,7 @@ class SessionTools(object):
 	def login(self, set_cookie, user_id):
 		session_id = uuid.uuid4()
 		self.cache.set(session_id, user_id)
-		set_cookie("session_id", session_id)
+		set_cookie("session_id", session_id, 20 * 60)
 
 	def logged_user(self, get_cookie):
 		session_id = get_cookie("session_id")

@@ -15,8 +15,8 @@ class NoticeHandler(tornado.web.RequestHandler):
 		return self.write(json.dumps(self.notices.get_all()))
 
 	def post(self):
-		account = get_body_argument("account")
-		passwd = get_body_argument("passwd")
+		account = self.get_body_argument("account")
+		passwd = self.get_body_argument("passwd")
 		if not account or not passwd:
 			return self.write(json.dumps({
 						u"error": 1,
@@ -44,8 +44,8 @@ class NoticeHandler(tornado.web.RequestHandler):
 		return func
 	@login_required
 	def put(self, user_id):
-		contents = get_body_argument("contents")
-		life = get_body_argument("life")
+		contents = self.get_body_argument("contents")
+		life = self.get_body_argument("life")
 		self.notices.add_notice({
 				u"contents": contents,
 				u"life": life,
@@ -56,7 +56,7 @@ class NoticeHandler(tornado.web.RequestHandler):
 	
 	@login_required
 	def delete(self, user_id):
-		notice_id = get_body_argument("notice_id")
+		notice_id = self.get_body_argument("notice_id")
 		self.notices.remove(notice_id)
 		self.redirect("/results?type=notice&operating=delete")
 		
