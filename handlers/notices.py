@@ -51,7 +51,7 @@ class NoticeHandler(tornado.web.RequestHandler):
 			return fn(self, user_id)
 		return func
 	@login_required
-	def put(self, user_id):
+	def post(self, user_id):
 		contents = self.get_body_argument("contents")
 		life = self.get_body_argument("life")
 		notice_id = self.notices.add_notice({

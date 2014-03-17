@@ -37,7 +37,7 @@ class UserHandler(tornado.web.RequestHandler):
 						u"content": u"用户名或密码错误"
 						}))
 		self.session.login(self.set_cookie, user_id)
-		self.redirect(r'/')
+		return self.redirect('/')
 	
 	def admin_required(fn):
 		@wraps(fn)
