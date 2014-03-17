@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	 <title>TV</title>
+	 <link rel="stylesheet" href="static/style/reset.min.css">
+	 <link rel="stylesheet" href="static/style/tv.min.css">
+</head>
+<body>
+	<div class="top-nav">
+		<div class="logo-wrapper">
+			<div class="logo"></div>
+		</div>
+		<p class="title">软件学院通知专栏</p>
+		<div class="clock">2014年3月16日 下午 6:40:30</div>
+	</div>
+	<div class="container">
+		<div class="main column">
+			<div class="news-container">
+				<ul class="news-list">
+					<li class="news-item clearfix">
+						<p class="time">2014-3-17</p>
+						<p class="content">测试一下...</p>
+						<p class="author">李享荫</p>
+					</li>
+					<li class="news-item clearfix">
+						<p class="time">2014-3-17</p>
+						<p class="content">测试一下...这条通知非常长非常长...这条通知非常长非常长...这条通知非常长非常长...这条通知非常长非常长...这条通知非常长非常长...</p>
+						<p class="author">李享荫</p>						
+					</li>
+					<li class="news-item clearfix">
+						<p class="time">2014-3-17</p>
+						<p class="content">测试一下...</p>
+						<p class="author">李享荫</p>						
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="sidbar column">
+			<div class="old-container">
+				<ul class="old-list">
+					<li class="old-item clearfix">
+						<p class="content">我来测试一下...这条通知非常长非常长...非常长...要overflow了...</p>
+						<p class="author">李享荫</p>
+					</li>
+					<li class="old-item clearfix">
+						<p class="content">我来测试一下...</p>
+						<p class="author">李享荫</p>
+					</li>
+					<li class="old-item clearfix">
+						<p class="content">我来测试一下...</p>
+						<p class="author">李享荫</p>
+					</li>
+					<li class="old-item clearfix">
+						<p class="content">我来测试一下...</p>
+						<p class="author">李享荫</p>
+					</li>
+					<li class="old-item clearfix">
+						<p class="content">我来测试一下...</p>
+						<p class="author">李享荫</p>
+					</li>
+					<li class="old-item clearfix">
+						<p class="content">我来测试一下...</p>
+						<p class="author">李享荫</p>
+					</li>
+					<li class="old-item clearfix">
+						<p class="content">我来测试一下...</p>
+						<p class="author">李享荫</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class="copyright">
+			华中科技大学 &#169 大软院
+		</div>
+	</div>
+	<script id="news-list">
+		<li class="news-item clearfix">
+			<p class="time">{{time}}</p>
+			<p class="content">{{content}}</p>
+			<p class="author">{{author}}</p>
+		</li>
+	</script>
+	<script id="old-list">
+		<li class="old-item clearfix">
+			<p class="content">{{content}}</p>
+			<p class="author">{{author}}</p>
+		</li>
+	</script>
+	<script src="static/script/jquery-1.11.0.min.js"></script>
+	<script src="static/script/handlebars-v1.min.js"></script>
+	<script src="static/script/time.min.js"></script>
+</body>
+</html>
