@@ -11,8 +11,8 @@ class UserModel(ModelBase):
 		return str(self.collection.insert(user))
 
 	def login(self, account, passwd):
-		user_id = self.collection.find_one({"account": account, "passwd": passwd})
-		return str(user_id) if user_id else None
+		user_msg = self.collection.find_one({"account": account, "passwd": passwd})
+		return str(user_msg["_id"]) if user_msg else None
 
 	def get_all(self):
 		cursor = self.collection.find()
