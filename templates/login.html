@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	 <title>Add - Notice</title>
+	 <link rel="stylesheet" href="static/style/reset.min.css">
+	 <link rel="stylesheet" href="static/style/addnotice.min.css">
+</head>
+<body>
+	<div class="top-nav" onselectstart="return false">
+		<div class="logo-wrapper">
+			<div class="logo"></div>
+		</div>
+		<p class="title">添加通知</p>
+		<div class="clock"></div>
+	</div>
+	<div class="container">
+		<form action="/user" method="POST">
+			<div class="item">
+				<p><lable for="account">用户名:</lable></p>
+				<input type="text" id="account" name="account" class="input" required="required" placeholder="请输入用户名" value="" />
+			</div>
+			<div class="item">
+				<p><lable for="passwd">密码:</lable></p>
+				<input type="password" id="passwd" name="passwd" class="input" required="required" placeholder="请输入密码" value="" />
+			</div>
+			<input type="submit" />
+		</form>
+	</div>
+	<div class="footer">
+		<div class="copyright">
+			华中科技大学 &#169 大软院
+		</div>
+	</div>
+	<script src="static/script/jquery-1_10_1.min.js"></script>
+	<script src="static/script/time.min.js"></script>
+	<script src="static/script/message.min.js"></script>
+</body>
+</html>
