@@ -10,7 +10,7 @@ class SessionTools(object):
 		self.cache = memcache.Client(['127.0.0.1:12333'])
 	
 	def login(self, set_cookie, user_id):
-		session_id = uuid.uuid4()
+		session_id = uuid.uuid4().get_hex()
 		self.cache.set(session_id, user_id)
 		set_cookie("session_id", session_id, 20 * 60)
 

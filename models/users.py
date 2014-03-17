@@ -10,6 +10,10 @@ class UserModel(ModelBase):
 				return None
 		return str(self.collection.insert(user))
 
+	def login(self, account, passwd):
+		user_id = self.collection.find({"account": account, "passwd": passwd})
+		return str(user_id) if user_id else None
+
 	def get_all(self):
 		cursor = self.collection.find()
 		return ModelBase.cursor2list(cursor)
