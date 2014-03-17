@@ -1,4 +1,4 @@
-from handlers import IndexHandler, UserHandler, NoticeHandler, ResultHandler, ShowHandler
+from handlers import IndexHandler, UserHandler, NoticeHandler, ResultHandler, ShowHandler, NewNoticeHandler
 
 views = [
 	(r'/', IndexHandler),
@@ -6,4 +6,5 @@ views = [
 	(r'/notice', NoticeHandler),
 	(r'/results', ResultHandler),
 	(r'/show', ShowHandler),
+	(r'/getnew', NewNoticeHandler),
 ]

@@ -14,6 +14,10 @@ class NoticeModel(ModelBase):
 					"invalid_date": datetime.utcnow() + timedelta(days = int(data["life"]))
 				}	
 		return str(self.collection.insert(notice))
+	
+	def get_one(self, notice_id):
+		notice = self.collection.get_one(ModelBase.get_oid(notice_id))
+		return ModelBase.transform_id(notice)
 
 	def get_all(self):
 		cursor = self.collection.find()

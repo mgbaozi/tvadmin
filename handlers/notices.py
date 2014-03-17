@@ -5,31 +5,34 @@ from models import NoticeModel
 import json
 from functools import wraps
 
+from base.singleton import Singleton
+class NoticePusher(object):
+	__metaclas__ = Singleton
+	def __init__(self):
+		self._callbacks = []
+		self.notices = NoticeModel()
+
+	def register(self, callback):
+		self._callbacks.append(callback)
+	
+	def unregister(self, callback):
+		self._callbacks.remove(callback)
+	
+	def notify_all(self, notice_id):
+		notice = self.notices.get_one(notice_id)
+		for callback in self._callbacks:
+			callback(notice)
+		self._callbacks = []
+
 class NoticeHandler(tornado.web.RequestHandler):
 	def __init__(self, application, request, **kwargs):
 		self.session = SessionTools()
 		self.notices = NoticeModel()
+		self.pusher = NoticePusher()
 		super(NoticeHandler, self).__init__(application, request, **kwargs)
 
 	def get(self):
 		return self.write(json.dumps(self.notices.get_all()))
-
-	def post(self):
-		account = self.get_body_argument("account")
-		passwd = self.get_body_argument("passwd")
-		if not account or not passwd:
-			return self.write(json.dumps({
-						u"error": 1,
-						u"content": u"请输入用户名或密码！"
-						}))
-		notice_id = self.notices.login(account, passwd)
-		if not notice_id:
-			return self.write(json.dumps({
-						u"error": 2,
-						u"content": u"用户名或密码错误"
-						}))
-		self.session.login(self.set_cookie, notice_id)
-		self.redirect(r'/')
 	
 	def login_required(fn):
 		@wraps(fn)
@@ -46,17 +49,37 @@ class NoticeHandler(tornado.web.RequestHandler):
 	def put(self, user_id):
 		contents = self.get_body_argument("contents")
 		life = self.get_body_argument("life")
-		self.notices.add_notice({
+		notice_id = self.notices.add_notice({
 				u"contents": contents,
 				u"life": life,
 				u"publisher": user_id
 				})
-		user_id = self.session.logged_user(self.get_cookie)
-		self.redirect("/results?type=notice&operating=add&account={0}&name={1}&limits={2}".format(account, name, limits))
+		if not notice_id:
+			notice_id = ""
+		else:
+			self.pusher.notify_all(notice_id)
+		self.redirect("/results?type=notice&operating=add&id={0}".format(notice_id))
 	
 	@login_required
 	def delete(self, user_id):
 		notice_id = self.get_body_argument("notice_id")
 		self.notices.remove(notice_id)
 		self.redirect("/results?type=notice&operating=delete")
-		
+
+class NewNoticeHandler(tornado.web.RequestHandler):
+	def __init__(self, application, request, **kwargs):
+		self.session = SessionTools()
+		self.notices = NoticeModel()
+		self.pusher = NoticePusher()
+		super(NewNoticeHandler, self).__init__(application, request, **kwargs)
+	@tornado.web.asynchronous
+	def get(self):
+		self.pusher.register(self.notify)
+
+	def notify(self, notice):
+		self.write(json.dumps(notice))
+		self.finish()
+	
+	def on_close(self):
+		self.pusher.unregister(self.notify)
+
