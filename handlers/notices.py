@@ -4,6 +4,9 @@ from base.session_tools import SessionTools
 from models import NoticeModel
 import json
 from functools import wraps
+import logging
+log = logging.getLogger("notice")
+log.setLevel(logging.DEBUG)
 
 from base.singleton import Singleton
 class NoticePusher(object):
@@ -13,9 +16,11 @@ class NoticePusher(object):
 		self.notices = NoticeModel()
 
 	def register(self, callback):
+		log.debug("register callback")
 		self._callbacks.append(callback)
 	
 	def unregister(self, callback):
+		log.debug("unregister callback")
 		self._callbacks.remove(callback)
 	
 	def notify_all(self, notice_id):
@@ -80,6 +85,6 @@ class NewNoticeHandler(tornado.web.RequestHandler):
 		self.write(json.dumps(notice))
 		self.finish()
 	
-	def on_close(self):
+	def on_connection_close(self):
 		self.pusher.unregister(self.notify)
 
