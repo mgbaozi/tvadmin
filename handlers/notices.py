@@ -10,7 +10,7 @@ log.setLevel(logging.DEBUG)
 
 from base.singleton import Singleton
 class NoticePusher(object):
-	__metaclas__ = Singleton
+	__metaclass__ = Singleton
 	def __init__(self):
 		self._callbacks = []
 		self.notices = NoticeModel()
@@ -25,6 +25,7 @@ class NoticePusher(object):
 	
 	def notify_all(self, notice_id):
 		notice = self.notices.get_one(notice_id)
+		log.debug("notify {0}".format(self._callbacks))
 		for callback in self._callbacks:
 			callback(notice)
 		self._callbacks = []
@@ -38,7 +39,6 @@ class NoticeHandler(tornado.web.RequestHandler):
 
 	def get(self):
 		notices = self.notices.get_all()
-		log.debug(str(notices))
 		return self.write(json.dumps(notices))
 	
 	def login_required(fn):
@@ -54,6 +54,7 @@ class NoticeHandler(tornado.web.RequestHandler):
 		return func
 	@login_required
 	def post(self, user_id):
+		log.debug("on_post")
 		content = self.get_body_argument("content")
 		life = self.get_body_argument("life")
 		notice_id = self.notices.add_notice({
@@ -61,6 +62,7 @@ class NoticeHandler(tornado.web.RequestHandler):
 				u"life": life,
 				u"publisher": user_id
 				})
+		log.debug("add notice id:{0}".format(notice_id))
 		if not notice_id:
 			notice_id = ""
 		else:
@@ -84,6 +86,7 @@ class NewNoticeHandler(tornado.web.RequestHandler):
 		self.pusher.register(self.notify)
 
 	def notify(self, notice):
+		log.debug("notify{0}".format(notice))
 		self.write(json.dumps(notice))
 		self.finish()
 	
