@@ -31,11 +31,11 @@ class NoticeModel(ModelBase):
 		return ModelBase.transform_id(notice)
 
 	def get_all(self):
-		cursor = self.collection.find()
+		cursor = self.collection.find().sort("create_date", -1)
 		notice_list = ModelBase.cursor2list(cursor)
 		return [self.to_user(notice) for notice in notice_list]
 
 	def get_effective(self):
-		cursor = self.collection.find({'$gte': datetime.utcnow()})
+		cursor = self.collection.find(invalid_date = {'$gte': datetime.utcnow()}).sort("create_date", -1)
 		notice_list = ModelBase.cursor2list(cursor)
 		return [self.to_user(notice) for notice in notice_list]
