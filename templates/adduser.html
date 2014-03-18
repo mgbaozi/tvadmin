@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	 <title>Add - User</title>
+	 <link rel="stylesheet" href="static/style/reset.min.css">
+	 <link rel="stylesheet" href="static/style/form.min.css">
+</head>
+<body>
+	<div class="top-nav" onselectstart="return false">
+		<div class="logo-wrapper">
+			<div class="logo"></div>
+		</div>
+		<p class="title">添加用户</p>
+		<div class="clock"></div>
+	</div>
+	<div class="container">
+		<div class="form-central">
+				<legend align="center">添加用户</legend>
+				<div class="control-group">	
+					<div class="control">
+						<label class="control-label" for="account">用户名:</label>
+						<div class="controller">
+							<input type="text" id="account" name="account" required="required" placeholder="请输入用户名" value="" />
+						</div>
+					</div>
+					<div class="control">
+						<label class="control-label" for="passwd">密码:</label>
+						<div class="controller">
+							<input type="password" id="passwd" name="passwd" required="required" placeholder="请输入密码" value="" />
+						</div>
+					</div>
+					<div class="control">
+						<label class="control-label" for="name">姓名:</label>
+						<div class="controller">
+							<input type="text" id="name" name="name" required="required" placeholder="请输入姓名" value="" />
+						</div>
+					</div>
+					<div class="control">
+						<label class="control-label" for="limits">用户权限:</label>
+						<div class="controller">
+							<select name="limits" id="limits">
+								<option value="root">超级用户</option>
+								<option value="admin">管理员</option>
+								<option value="normal">普通用户</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<button class="btn">提交</button>
+		</div>
+	</div>
+	<div class="footer">
+		<div class="copyright">
+			华中科技大学 &#169 大软院
+		</div>
+	</div>
+	<script src="static/script/jquery-1_10_1.min.js"></script>
+	<script src="static/script/time.min.js"></script>
+	<script src="static/script/message.min.js"></script>
+</body>
+</html>
