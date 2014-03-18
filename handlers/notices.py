@@ -38,7 +38,7 @@ class NoticeHandler(tornado.web.RequestHandler):
 		super(NoticeHandler, self).__init__(application, request, **kwargs)
 
 	def get(self):
-		notices = self.notices.get_all()
+		notices = self.notices.get_effective()
 		return self.write(json.dumps(notices))
 	
 	def login_required(fn):
