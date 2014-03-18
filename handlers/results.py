@@ -27,19 +27,24 @@ class ResultHandler(tornado.web.RequestHandler):
 		op_method = res_type.get(op_type_str)
 		if not op_method:
 			raise tornado.web.HTTPError(404)
-		return op_method()
+		message = op_method()
+		return self.render("redirect.html", message = message)
 	
 	def _user_add(self):
+		message = u"添加用户成功"
 		user_id = self.get_argument("id")
 		if not user_id:
-			return self.write(u"用户已存在")
-		return self.write(u"添加成功")
+			message = u"用户已存在"
+		return message
 
 	def _notice_add(self):
-		return self.write(u"添加通知成功")
+		message = u"添加通知成功"
+		return message
 
 	def _user_delete(self):
-		return self.write(u"删除成功")
+		message = u"删除用户成功"
+		return message
 
 	def _notice_delete(self):
-		return self.write(u"删除通知成功")
+		message = u"删除通知成功"
+		return message
