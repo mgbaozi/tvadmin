@@ -4,27 +4,36 @@
 	<meta charset="UTF-8">
 	 <title>Add - Notice</title>
 	 <link rel="stylesheet" href="static/style/reset.min.css">
-	 <link rel="stylesheet" href="static/style/addnotice.min.css">
+	 <link rel="stylesheet" href="static/style/form.min.css">
 </head>
 <body>
 	<div class="top-nav" onselectstart="return false">
 		<div class="logo-wrapper">
 			<div class="logo"></div>
 		</div>
-		<p class="title">添加通知</p>
+		<p class="title">用户登录</p>
 		<div class="clock"></div>
 	</div>
 	<div class="container">
-		<form action="/user" method="POST">
-			<div class="item">
-				<p><lable for="account">用户名:</lable></p>
-				<input type="text" id="account" name="account" class="input" required="required" placeholder="请输入用户名" value="" />
-			</div>
-			<div class="item">
-				<p><lable for="passwd">密码:</lable></p>
-				<input type="password" id="passwd" name="passwd" class="input" required="required" placeholder="请输入密码" value="" />
-			</div>
-			<input type="submit" />
+		<form action="/user" method="POST" class="form-central">
+			<fieldset>
+				<legend align="center">登录</legend>
+				<div class="control-group">	
+					<div class="control">
+						<label class="control-label" for="account">用户名:</label>
+						<div class="controller">
+							<input type="text" id="account" name="account" required="required" placeholder="请输入用户名" value="" />
+						</div>
+					</div>
+					<div class="control">
+						<label class="control-label" for="passwd">密码:</label>
+						<div class="controller">
+							<input type="password" id="passwd" name="passwd" required="required" placeholder="请输入密码" value="" />
+						</div>
+					</div>
+				</div>
+				<input type="submit" class="btn" value="提交"/>
+			</fieldset>
 		</form>
 	</div>
 	<div class="footer">
