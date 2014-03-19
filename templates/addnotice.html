@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	 <title>Add - Notice</title>
 	 <link rel="stylesheet" href="static/style/reset.min.css">
+	 <link rel="stylesheet" href="static/style/form.min.css">
 	 <link rel="stylesheet" href="static/style/addnotice.min.css">
 </head>
 <body>
@@ -15,16 +16,41 @@
 		<div class="clock"></div>
 	</div>
 	<div class="container">
-		<form action="/notice" method="PUT">
-			<div class="item">
-				<p><lable for="life">过期时间:</lable></p>
-				<input type="text" id="life" name="life" class="input" required="required" placeholder="请输入过期时间" value="" />
-			</div>
-			<div class="item">
-				<p><lable for="life">过期时间:</lable></p>
-				<textarea type="text" id="content" name="content" class="input" required="required" placeholder="请输入内容" value=""></textarea>				
-			</div>
-			<input type="submit" />
+		<form action="/notice" method="POST" class="form-central">
+			<fieldset>
+				<legend align="center">添加通知</legend>
+				<div class="control-group">	
+					<div class="control">
+						<label class="control-label" for="time">过期时间</label>
+						<div class="controller">
+							<select name="time" id="time">
+								<option value="1">1天</option>
+								<option value="2">2天</option>
+								<option value="3">3天</option>
+								<option value="4">4天</option>
+								<option value="5">5天</option>
+								<option value="6">6天</option>
+								<option value="7">7天</option>
+								<option value="8">8天</option>
+								<option value="9">9天</option>
+								<option value="10">10天</option>
+								<option value="11">11天</option>
+								<option value="12">12天</option>
+								<option value="13">13天</option>
+								<option value="14">14天</option>
+								<option value="15">15天</option>
+							</select>
+						</div>
+					</div>
+					<div class="control">
+						<label class="control-label" for="passwd">消息内容:</label>
+						<div class="controller">
+							<textarea name="content" id="content" cols="50" rows="5"></textarea>
+						</div>
+					</div>
+				</div>
+				<input type="submit" class="btn" value="提交"/>
+			</fieldset>
 		</form>
 	</div>
 	<div class="footer">
