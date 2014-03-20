@@ -18,54 +18,31 @@
 		<div class="main column">
 			<div class="news-container">
 				<ul class="news-list">
-					<li class="news-item clearfix">
-						<p class="time">2014-3-17</p>
-						<p class="content">测试一下...</p>
-						<p class="author">李享荫</p>
-					</li>
-					<li class="news-item clearfix">
-						<p class="time">2014-3-17</p>
-						<p class="content">测试一下...这条通知非常长非常长...这条通知非常长非常长...这条通知非常长非常长...这条通知非常长非常长...这条通知非常长非常长...</p>
-						<p class="author">李享荫</p>						
-					</li>
-					<li class="news-item clearfix">
-						<p class="time">2014-3-17</p>
-						<p class="content">测试一下...</p>
-						<p class="author">李享荫</p>						
-					</li>
 				</ul>
 			</div>
 		</div>
-		<div class="sidbar column">
+		<div class="sidebar column">
 			<div class="old-container">
 				<ul class="old-list">
 					<li class="old-item clearfix">
 						<p class="content">我来测试一下...这条通知非常长非常长...非常长...要overflow了...</p>
-						<p class="author">李享荫</p>
+						<p class="author">李尼玛</p>
 					</li>
 					<li class="old-item clearfix">
 						<p class="content">我来测试一下...</p>
-						<p class="author">李享荫</p>
+						<p class="author">李尼玛</p>
 					</li>
 					<li class="old-item clearfix">
 						<p class="content">我来测试一下...</p>
-						<p class="author">李享荫</p>
+						<p class="author">李尼玛</p>
 					</li>
 					<li class="old-item clearfix">
 						<p class="content">我来测试一下...</p>
-						<p class="author">李享荫</p>
+						<p class="author">李尼玛</p>
 					</li>
 					<li class="old-item clearfix">
 						<p class="content">我来测试一下...</p>
-						<p class="author">李享荫</p>
-					</li>
-					<li class="old-item clearfix">
-						<p class="content">我来测试一下...</p>
-						<p class="author">李享荫</p>
-					</li>
-					<li class="old-item clearfix">
-						<p class="content">我来测试一下...</p>
-						<p class="author">李享荫</p>
+						<p class="author">李尼玛</p>
 					</li>
 				</ul>
 			</div>
@@ -79,5 +56,42 @@
 	<script src="static/script/jquery-1_10_1.min.js"></script>
 	<script src="static/script/time.min.js"></script>
 	<script src="static/script/message.min.js"></script>
+	<script>
+		Show.init([{
+			mid: "1",
+			time: "2014-4-1",
+			content: "真是坑...这还没写完呢...",
+			author: "测试员"
+		},{
+			mid: "2",
+			time: "2014-4-2",
+			content: "我艹...",
+			author: "程序猿"
+		},{
+			mid: "3",
+			time: "2014-4-1",
+			content: "这些都是什么",
+			author: "设计师"
+		},{
+			mid: "4",
+			time: "2014-4-2",
+			content: "你们这是自寻死路",
+			author: "辅导员"
+		},{
+			mid: "5",
+			time: "2014-4-5",
+			content: "我就试试...",
+			author: "测试员"
+		},{
+			mid: "76",
+			time: "2014-4-1",
+			content: "这真是毫无意义啊",
+			author: "测试员"
+		}],true);
+
+		setInterval(function(){
+			Show.roll();
+		},10000);
+	</script>
 </body>
 </html>

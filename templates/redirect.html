@@ -6,8 +6,15 @@
 </head>
 <body>
 	<p>{{ message }}</p>
+	<p id="count_down"></p>
 	<script>
-		location.href = '/'
+		var time = 5;
+		setInterval(function(){
+			document.getElementById('count_down').innerHTML = time + "秒后将会自动跳转..."
+			if(time == 0){
+				location.href = '/';
+			}
+		},1000);
 	</script>
 </body>
 </html>

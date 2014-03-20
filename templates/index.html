@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	 <title>Index</title>
+	 <link rel="stylesheet" href="static/style/reset.min.css">
+	 <link rel="stylesheet" href="static/style/index.min.css">
+</head>
+<body>
+	<div class="top-nav" onselectstart="return false">
+		<div class="logo-wrapper">
+			<div class="logo"></div>
+		</div>
+		<p class="title">通知</p>
+		<div class="clock"></div>
+	</div>
+	<div class="container clearfix">
+		<div class="main">
+			<div class="news-container">
+				<ul class="news-list"></ul>
+			</div>
+		</div>
+		<div class="sidebar">
+			<div class="btn-group">
+				<button class="btn opt">添加用户</button>
+				<button class="btn opt">添加用户</button>
+				<button class="btn opt">添加用户</button>
+			</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class="copyright">
+			华中科技大学 &#169 大软院
+		</div>
+	</div>
+	<script src="static/script/jquery-1_10_1.min.js"></script>
+	<script src="http://code.jquery.com/jquery-migrate-1.1.1.js"></script>
+	<script src="static/script/time.min.js"></script>
+	<script src="static/script/message.min.js"></script>
+	<script src="static/script/jquery_mousewheel.min.js"></script>
+	<script src="static/script/jquery_jqdrag.min.js"></script>
+	<script src="static/script/jquery_jscrollbar.js"></script>
+	<script>
+		Show.init([{
+			mid: "1",
+			time: "2014-4-1",
+			content: "真是坑...这还没写完呢...",
+			author: "测试员"
+		},{
+			mid: "2",
+			time: "2014-4-2",
+			content: "我艹...",
+			author: "程序猿"
+		},{
+			mid: "3",
+			time: "2014-4-1",
+			content: "这些都是什么",
+			author: "设计师"
+		},{
+			mid: "4",
+			time: "2014-4-2",
+			content: "你们这是自寻死路",
+			author: "辅导员"
+		},{
+			mid: "5",
+			time: "2014-4-5",
+			content: "我就试试...",
+			author: "测试员"
+		},{
+			mid: "76",
+			time: "2014-4-1",
+			content: "这真是毫无意义啊",
+			author: "测试员"
+		}]);
+		$(function() {
+			$(".news-container").css("height",$(window).height() > 550 ? $(window).height() - 245 + "px" : "400px");
+			if ( $("ul.news-list").height() > $(".news-container").height() ){
+				$('.news-container').jscrollbar({
+					width:12,
+					color:'rgb(44, 139, 44)',
+					opacity:0.7,
+					position:'inner',
+					mouseScrollDirection:'vertical' // 'vertical' | 'horizontal'
+				});
+			}
+		});
+	</script>
+</body>
+</html>
